@@ -13,6 +13,7 @@ BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	intltool >= 0.33
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	gnome-system-tools
 
 %description
 Backends for GNOME System Tools.
