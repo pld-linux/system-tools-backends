@@ -1,12 +1,12 @@
 Summary:	GNOME System Tools backends
 Summary(pl):	Backendy GNOME System Tools (narzêdzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	1.2.0
-Release:	2
+Version:	1.3.0
+Release:	1
 License:	LGPL
 Group:		Applications/System
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	96b00eb0f800c1b5346be2f71d4dc3b2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/1.3/%{name}-%{version}.tar.bz2
+# Source0-md5:	52fb12316b2ea8bb57871b131f9a8fc7
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -38,12 +38,12 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
-%find_lang setup-tools-backends
+%find_lang system-tools-backends
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f setup-tools-backends.lang
+%files -f system-tools-backends.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %dir %{_datadir}/setup-tool-backends
