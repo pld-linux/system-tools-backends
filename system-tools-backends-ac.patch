@@ -1,0 +1,15 @@
+diff -urN aaa/system-tools-backends-1.9.3/configure.in system-tools-backends-1.9.3/configure.in
+--- aaa/system-tools-backends-1.9.3/configure.in	2006-08-12 20:02:40.000000000 +0200
++++ system-tools-backends-1.9.3/configure.in	2006-08-15 19:14:08.582535750 +0200
+@@ -91,6 +91,11 @@
+    internalnetdbus=yes
+ fi
+ 
++if test -z "$netdbusdir" ; then
++    netdbusdir="."
++    AC_SUBST(netdbusdir)
++fi
++
+ AM_CONDITIONAL(INTERNAL_NET_DBUS, test x$internalnetdbus = xyes)
+ 
+ AC_OUTPUT([
