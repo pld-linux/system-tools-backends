@@ -3,6 +3,9 @@
 # - make %files section
 # - test it
 # - add pld th backends
+# NOTE:
+# - s-t-b 1.9.x will be not used with GNOME 2.16 (according to GNOME
+#   release team)
 #
 Summary:	GNOME System Tools backends
 Summary(pl):	Backendy GNOME System Tools (narzêdzi systemowych GNOME)
