@@ -10,21 +10,20 @@
 Summary:	GNOME System Tools backends
 Summary(pl):	Backendy GNOME System Tools (narzêdzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	1.9.3
-Release:	3
+Version:	1.9.5.1
+Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/1.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	4ad33a82d18a990723393a9aa9677d35
+# Source0-md5:	e416c7b2f2c49b5d332b69ddbbb28e9f
 Patch0:		%{name}-ac.patch
-Patch1:		%{name}-m4.patch
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	intltool >= 0.33
-BuildRequires:	perl-Net-DBus >= 0.33.3-0.2
-Requires:	perl-Net-DBus >= 0.33.3-0.2
+BuildRequires:	perl-Net-DBus >= 0.33.3-1
+Requires:	perl-Net-DBus >= 0.33.3-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,7 +35,6 @@ Backendy dla GNOME System Tools (narzêdzi systemowych GNOME).
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal}
@@ -58,7 +56,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus*/system.d/*
-%{_aclocaldir}/*.m4
 %{_datadir}/dbus-1/services/*.service
 %dir %{_datadir}/%{name}-2.0
 %dir %{_datadir}/%{name}-2.0/files
