@@ -10,13 +10,12 @@
 Summary:	GNOME System Tools backends
 Summary(pl):	Backendy GNOME System Tools (narzêdzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	1.9.5.1
+Version:	1.9.6
 Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/1.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	e416c7b2f2c49b5d332b69ddbbb28e9f
-Patch0:		%{name}-ac.patch
+# Source0-md5:	b5ab928d97e494ef51cdb0e97e83499a
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -34,7 +33,6 @@ Backendy dla GNOME System Tools (narzêdzi systemowych GNOME).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__aclocal}
