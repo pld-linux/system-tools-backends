@@ -1,5 +1,5 @@
 Summary:	GNOME System Tools backends
-Summary(pl.UTF-8):   Backendy GNOME System Tools (narzędzi systemowych GNOME)
+Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
 Version:	1.4.2
 Release:	1
