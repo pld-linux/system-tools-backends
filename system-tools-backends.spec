@@ -1,5 +1,5 @@
 Summary:	GNOME System Tools backends
-Summary(pl):	Backendy GNOME System Tools (narzêdzi systemowych GNOME)
+Summary(pl.UTF-8):   Backendy GNOME System Tools (narzÄ™dzi systemowych GNOME)
 Name:		system-tools-backends
 Version:	1.4.2
 Release:	1
@@ -17,8 +17,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Backends for GNOME System Tools.
 
-%description -l pl
-Backendy dla GNOME System Tools (narzêdzi systemowych GNOME).
+%description -l pl.UTF-8
+Backendy dla GNOME System Tools (narzÄ™dzi systemowych GNOME).
 
 %prep
 %setup -q
