@@ -1,21 +1,13 @@
 #
-# TODO:
-# - make %files section
-# - test it
-# - add pld th backends
-# NOTE:
-# - s-t-b 1.9.x will be not used with GNOME 2.16 (according to GNOME
-#   release team)
-#
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):   Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	1.9.7
-Release:	1
+Version:	2.2.0
+Release:	0.1
 License:	LGPL
 Group:		Applications/System
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/1.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	7fe167c1b02c0b65b8446ebefb4c5024
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	c22888cd0d6de02601d014215959f4d0
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -53,13 +45,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus*/system.d/*
-%{_datadir}/dbus-1/services/*.service
+
 %dir %{_datadir}/%{name}-2.0
 %dir %{_datadir}/%{name}-2.0/files
-%attr(755,root,root) %{_datadir}/%{name}-2.0/files/*
 %dir %{_datadir}/%{name}-2.0/scripts
+
+%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_datadir}/%{name}-2.0/files/*
 %attr(755,root,root) %{_datadir}/%{name}-2.0/scripts/*.pl
+
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus*/system.d/*
+
+%{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}-2.0/scripts/*.pm
 %{_datadir}/%{name}-2.0/scripts/Init
 %{_datadir}/%{name}-2.0/scripts/Network
