@@ -39,14 +39,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
-
-%find_lang system-tools-backends
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f system-tools-backends.lang
+%files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 
