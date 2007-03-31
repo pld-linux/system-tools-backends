@@ -1,4 +1,3 @@
-#
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
@@ -45,18 +44,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
+%attr(755,root,root) %{_bindir}/*
+
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus*/system.d/*
+%{_datadir}/dbus-1/services/*.service
 
 %dir %{_datadir}/%{name}-2.0
 %dir %{_datadir}/%{name}-2.0/files
 %dir %{_datadir}/%{name}-2.0/scripts
-
-%attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_datadir}/%{name}-2.0/files/*
 %attr(755,root,root) %{_datadir}/%{name}-2.0/scripts/*.pl
-
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus*/system.d/*
-
-%{_datadir}/dbus-1/services/*.service
 %{_datadir}/%{name}-2.0/scripts/*.pm
 %{_datadir}/%{name}-2.0/scripts/Init
 %{_datadir}/%{name}-2.0/scripts/Network
