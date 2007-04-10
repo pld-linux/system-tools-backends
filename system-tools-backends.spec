@@ -1,16 +1,16 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.2.0
-Release:	0.1
+Version:	2.2.1
+Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	c22888cd0d6de02601d014215959f4d0
+# Source0-md5:	ee8a0f412e47748285672f9825647cd2
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	gnome-common >= 2.12.0
+BuildRequires:	gnome-common >= 2.18.0
 BuildRequires:	intltool >= 0.33
 BuildRequires:	perl-Net-DBus >= 0.33.3-1
 Requires:	perl-Net-DBus >= 0.33.3-1
