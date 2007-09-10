@@ -1,12 +1,12 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.3.1
+Version:	2.3.2
 Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	5c1c913799c1ccdcedbb30c05736d9a3
+# Source0-md5:	efa78ca13ef11f2f7151dc0b7bb8e49d
 Source1:	%{name}.init
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
