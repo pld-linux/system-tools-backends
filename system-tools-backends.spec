@@ -2,18 +2,24 @@ Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
 Version:	2.3.1
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	5c1c913799c1ccdcedbb30c05736d9a3
+Source1:	%{name}.init
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	intltool >= 0.33
+BuildRequires:	libtool
 BuildRequires:	perl-Net-DBus >= 0.33.3-1
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires(post,preun):	/sbin/chkconfig
 Requires:	perl-Net-DBus >= 0.33.3-1
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -26,6 +32,7 @@ Backendy dla GNOME System Tools (narzędzi systemowych GNOME).
 %setup -q
 
 %build
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
@@ -35,17 +42,31 @@ Backendy dla GNOME System Tools (narzędzi systemowych GNOME).
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/system-tools-backends
+
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+/sbin/chkconfig --add system-tools-backends
+%service system-tools-backends restart "system-tools-backends daemon"
+
+%preun
+if [ "$1" = "0" ]; then
+	%service system-tools-backends stop
+	/sbin/chkconfig --del system-tools-backends
+fi
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
+%attr(754,root,root) /etc/rc.d/init.d/system-tools-backends
 
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus*/system.d/*
 %{_datadir}/dbus-1/services/*.service
