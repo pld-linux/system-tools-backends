@@ -1,0 +1,26 @@
+diff -urN system-tools-backends-2.3.2/Users/Users.pm system-tools-backends-2.3.2.new/Users/Users.pm
+--- system-tools-backends-2.3.2/Users/Users.pm	2006-10-05 14:27:21.000000000 +0200
++++ system-tools-backends-2.3.2.new/Users/Users.pm	2007-09-10 22:54:28.000000000 +0200
+@@ -226,6 +226,13 @@
+   'skel_dir' => '/etc/skel/',
+ };
+ 
++my $pld_logindefs_defaults = {
++  'home_prefix' => '/home/users/',
++  'shell'    => '/bin/bash',
++  'group'    => 1000,
++  'skel_dir' => '/etc/skel/',
++};
++
+ my $logindefs_dist_map = {
+   'redhat-6.2'      => $rh_logindefs_defaults,
+   'redhat-7.0'      => $rh_logindefs_defaults,
+@@ -234,7 +241,7 @@
+   'redhat-7.3'      => $rh_logindefs_defaults,
+   'redhat-8.0'      => $rh_logindefs_defaults,
+   'mandrake-9.0'    => $rh_logindefs_defaults,
+-  'pld-1.0'         => $rh_logindefs_defaults,
++  'pld-1.0'         => $pld_logindefs_defaults,
+   'fedora-1'        => $rh_logindefs_defaults,
+   'debian-3.0'      => $rh_logindefs_defaults,
+   'vine-3.0'        => $rh_logindefs_defaults,
