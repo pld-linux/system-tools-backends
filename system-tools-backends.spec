@@ -1,12 +1,12 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.4.0
+Version:	2.4.1
 Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	e4b7fff9ed3b17cb7bacf9c0b9c657b5
+# Source0-md5:	063f38e6014c8f7ba9b92b0f94255652
 Source1:	%{name}.init
 Patch0:		%{name}-logindefs.patch
 URL:		http://www.gnome.org/projects/gst/
@@ -16,10 +16,10 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.18.0
 BuildRequires:	libtool
-BuildRequires:	perl-Net-DBus >= 0.33.3-1
+BuildRequires:	perl-Net-DBus >= 0.33.5
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
-Requires:	perl-Net-DBus >= 0.33.3-1
+Requires:	perl-Net-DBus >= 0.33.5
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
