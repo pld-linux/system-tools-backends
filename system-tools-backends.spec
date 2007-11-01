@@ -9,6 +9,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.4/%{name
 # Source0-md5:	063f38e6014c8f7ba9b92b0f94255652
 Source1:	%{name}.init
 Patch0:		%{name}-logindefs.patch
+Patch1:		%{name}-incompatible-gpasswd.patch
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -32,6 +33,7 @@ Backendy dla GNOME System Tools (narzędzi systemowych GNOME).
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
