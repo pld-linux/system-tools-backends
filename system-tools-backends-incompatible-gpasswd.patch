@@ -1,0 +1,27 @@
+diff -urN system-tools-backends-2.4.1/Users/Groups.pm system-tools-backends-2.4.1.new/Users/Groups.pm
+--- system-tools-backends-2.4.1/Users/Groups.pm	2006-10-05 14:27:21.000000000 +0200
++++ system-tools-backends-2.4.1.new/Users/Groups.pm	2007-11-01 00:06:05.000000000 +0100
+@@ -85,6 +85,11 @@
+ 
+     $command = "$cmd_usermod -G $groups $user";
+   }
++  # gpasswd from pwdutils has no -a option
++  elsif ($Utils::Backend::tool{"platform"} eq "pld-1.0")
++  {
++    $command = "$cmd_groupmod -A \'" . $user ."\' \'" . $group . "\'";
++  }
+   else
+   {
+     $command = "$cmd_gpasswd -a \'" . $user . "\' " . $group;
+@@ -118,6 +123,11 @@
+     
+     $command = "$cmd_usermod -G $groups $user";
+   }
++  # gpasswd from pwdutils has no -d option
++  elsif ($Utils::Backend::tool{"platform"} eq "pld-1.0")
++  {
++    $command = "$cmd_groupmod -R \'" . $user ."\' \'" . $group . "\'";
++  }
+   else
+   {
+     $command = "$cmd_gpasswd -d \'" . $user . "\' \'" . $group . "\'";
