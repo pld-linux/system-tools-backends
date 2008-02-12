@@ -1,12 +1,12 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.5.7
+Version:	2.5.8
 Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	66b32aebffc50775c3c6bf64c90e8852
+# Source0-md5:	d0cfb281616f194180e3e8ef99fdfe41
 Source1:	%{name}.init
 Patch0:		%{name}-logindefs.patch
 Patch1:		%{name}-incompatible-gpasswd.patch
@@ -14,6 +14,7 @@ URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	PolicyKit-devel >= 0.5
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	glib2-devel >= 1:2.15.4
 BuildRequires:	gnome-common >= 2.20.0
@@ -23,6 +24,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
 Requires:	PolicyKit
+Requires:	dbus >= 1.1.2
 Requires:	perl-Net-DBus >= 0.33.5
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
