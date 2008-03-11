@@ -1,25 +1,30 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.4.1
-Release:	2
+Version:	2.6.0
+Release:	1
 License:	LGPL
 Group:		Applications/System
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	063f38e6014c8f7ba9b92b0f94255652
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	faf321012e92b72305878cd684547c54
 Source1:	%{name}.init
 Patch0:		%{name}-logindefs.patch
 Patch1:		%{name}-incompatible-gpasswd.patch
 URL:		http://www.gnome.org/projects/gst/
+BuildRequires:	PolicyKit-devel >= 0.5
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	glib2-devel >= 1:2.14.0
-BuildRequires:	gnome-common >= 2.18.0
+BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	perl-Net-DBus >= 0.33.5
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
+Requires:	PolicyKit
+Requires:	dbus >= 1.1.2
 Requires:	perl-Net-DBus >= 0.33.5
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,6 +44,7 @@ Backendy dla GNOME System Tools (narzędzi systemowych GNOME).
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--with-stb-group=adm
@@ -69,17 +75,17 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/system-tools-backends
 %attr(754,root,root) /etc/rc.d/init.d/system-tools-backends
-
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus*/system.d/*
-%{_datadir}/dbus-1/services/*.service
-
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/system-tools-backends.conf
+%{_datadir}/dbus-1/system-services/*.service
+%{_datadir}/PolicyKit/policy/system-tools-backends.policy
 %dir %{_datadir}/%{name}-2.0
 %dir %{_datadir}/%{name}-2.0/files
 %dir %{_datadir}/%{name}-2.0/scripts
-%attr(755,root,root) %{_datadir}/%{name}-2.0/files/*
-%attr(755,root,root) %{_datadir}/%{name}-2.0/scripts/*.pl
+%attr(755,root,root) %{_datadir}/%{name}-2.0/files/general_isdn_ppp_options
+%attr(755,root,root) %{_datadir}/%{name}-2.0/files/general_pppoe_ppp_options
+%attr(755,root,root) %{_datadir}/%{name}-2.0/scripts/SystemToolsBackends.pl
 %{_datadir}/%{name}-2.0/scripts/*.pm
 %{_datadir}/%{name}-2.0/scripts/Init
 %{_datadir}/%{name}-2.0/scripts/Network
@@ -87,4 +93,5 @@ fi
 %{_datadir}/%{name}-2.0/scripts/Time
 %{_datadir}/%{name}-2.0/scripts/Users
 %{_datadir}/%{name}-2.0/scripts/Utils
-%{_pkgconfigdir}/*.pc
+%{_datadir}/%{name}-2.0/files
+%{_pkgconfigdir}/system-tools-backends-2.0.pc
