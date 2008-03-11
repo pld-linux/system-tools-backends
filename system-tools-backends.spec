@@ -1,12 +1,12 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.5.8
+Version:	2.6.0
 Release:	1
 License:	LGPL
 Group:		Applications/System
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	d0cfb281616f194180e3e8ef99fdfe41
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	faf321012e92b72305878cd684547c54
 Source1:	%{name}.init
 Patch0:		%{name}-logindefs.patch
 Patch1:		%{name}-incompatible-gpasswd.patch
@@ -16,7 +16,7 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	glib2-devel >= 1:2.15.4
+BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	perl-Net-DBus >= 0.33.5
