@@ -1,17 +1,15 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.6.1
+Version:	2.8.1
 Release:	1
 License:	LGPL
 Group:		Applications/System
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	c82a9d305c3a1bf924bba6b1bced3e86
-Source1:	%{name}.init
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	2aecff382af4d8ba7fcd69298cc79413
 Patch0:		%{name}-logindefs.patch
 Patch1:		%{name}-incompatible-gpasswd.patch
 URL:		http://www.gnome.org/projects/gst/
-BuildRequires:	PolicyKit-devel >= 0.5
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	dbus-devel >= 1.1.2
@@ -21,11 +19,12 @@ BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	perl-Net-DBus >= 0.33.5
 BuildRequires:	pkgconfig
+BuildRequires:	polkit-devel >= 0.92
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
-Requires:	PolicyKit
 Requires:	dbus >= 1.1.2
 Requires:	perl-Net-DBus >= 0.33.5
+Requires:	polkit >= 0.92
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,34 +51,26 @@ Backendy dla GNOME System Tools (narzędzi systemowych GNOME).
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/system-tools-backends
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-/sbin/chkconfig --add system-tools-backends
-%service system-tools-backends restart "system-tools-backends daemon"
+%triggerun -- system-tools-backends < 2.8.0
+%service system-tools-backends stop
+/sbin/chkconfig --del system-tools-backends
 
-%preun
-if [ "$1" = "0" ]; then
-	%service system-tools-backends stop
-	/sbin/chkconfig --del system-tools-backends
-fi
-
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/system-tools-backends
-%attr(754,root,root) /etc/rc.d/init.d/system-tools-backends
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/system-tools-backends.conf
+%attr(755,root,root) %{_sbindir}/system-tools-backends
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/org.freedesktop.SystemToolsBackends.conf
 %{_datadir}/dbus-1/system-services/*.service
-%{_datadir}/PolicyKit/policy/system-tools-backends.policy
+%{_datadir}/polkit-1/actions/org.freedesktop.SystemToolsBackends.policy
 %dir %{_datadir}/%{name}-2.0
 %dir %{_datadir}/%{name}-2.0/files
 %dir %{_datadir}/%{name}-2.0/scripts
