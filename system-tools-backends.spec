@@ -2,7 +2,7 @@ Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
 Version:	2.8.3
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.8/%{name}-%{version}.tar.bz2
@@ -75,9 +75,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/polkit-1/actions/org.freedesktop.SystemToolsBackends.policy
 %dir %{_datadir}/%{name}-2.0
 %dir %{_datadir}/%{name}-2.0/files
+%{_datadir}/%{name}-2.0/files/general_gprs_chatscript
+%{_datadir}/%{name}-2.0/files/general_isdn_ppp_options
+%{_datadir}/%{name}-2.0/files/general_pppoe_ppp_options
 %dir %{_datadir}/%{name}-2.0/scripts
-%attr(755,root,root) %{_datadir}/%{name}-2.0/files/general_isdn_ppp_options
-%attr(755,root,root) %{_datadir}/%{name}-2.0/files/general_pppoe_ppp_options
 %attr(755,root,root) %{_datadir}/%{name}-2.0/scripts/SystemToolsBackends.pl
 %{_datadir}/%{name}-2.0/scripts/*.pm
 %{_datadir}/%{name}-2.0/scripts/Init
@@ -86,5 +87,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}-2.0/scripts/Time
 %{_datadir}/%{name}-2.0/scripts/Users
 %{_datadir}/%{name}-2.0/scripts/Utils
-%{_datadir}/%{name}-2.0/files
 %{_pkgconfigdir}/system-tools-backends-2.0.pc
