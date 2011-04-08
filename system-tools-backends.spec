@@ -1,12 +1,12 @@
 Summary:	GNOME System Tools backends
 Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
-Version:	2.10.1
+Version:	2.10.2
 Release:	1
 License:	LGPL
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	bde46137761df8849d6ee176449f84f5
+# Source0-md5:	edae148b31342aecae035051adc70c74
 Patch0:		%{name}-logindefs.patch
 Patch1:		%{name}-incompatible-gpasswd.patch
 URL:		http://www.gnome.org/projects/gst/
