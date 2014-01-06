@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Backendy GNOME System Tools (narzędzi systemowych GNOME)
 Name:		system-tools-backends
 Version:	2.10.2
 Release:	1
-License:	LGPL
+License:	LGPL v2+
 Group:		Applications/System
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.10/%{name}-%{version}.tar.bz2
 # Source0-md5:	edae148b31342aecae035051adc70c74
@@ -17,16 +17,20 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	intltool
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
+BuildRequires:	perl-base
+# to avoid building internal Net::DBus module
 BuildRequires:	perl-Net-DBus >= 0.33.5
 BuildRequires:	pkgconfig
-BuildRequires:	polkit-devel >= 0.92
+BuildRequires:	polkit-devel >= 0.94
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
 Requires:	dbus >= 1.1.2
+Requires:	dbus-glib >= 0.74
+Requires:	glib2 >= 1:2.16.0
 Requires:	perl-Net-DBus >= 0.33.5
-Requires:	polkit >= 0.92
+Requires:	polkit >= 0.94
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,6 +39,21 @@ Backends for GNOME System Tools.
 
 %description -l pl.UTF-8
 Backendy dla GNOME System Tools (narzędzi systemowych GNOME).
+
+%package devel
+Summary:	Development files for GNOME System Tools backends
+Summary(pl.UTF-8):	Pliki programistyczne dla backendów narzędzi systemowych GNOME
+Group:		Development/Libraries
+# doesn't require base; the only file is pkg-config specific, so let's require it
+Requires:	pkgconfig
+
+%description devel
+This package contains files needed for GNOME System Tools backends
+related development.
+
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki potrzebne przy programowaniu związanym z
+backendami GNOME System Tools (narzędzi systemowych GNOME).
 
 %prep
 %setup -q
@@ -71,7 +90,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_sbindir}/system-tools-backends
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/org.freedesktop.SystemToolsBackends.conf
-%{_datadir}/dbus-1/system-services/*.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.SystemToolsBackends.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.SystemToolsBackends.*.service
 %{_datadir}/polkit-1/actions/org.freedesktop.SystemToolsBackends.policy
 %dir %{_datadir}/%{name}-2.0
 %dir %{_datadir}/%{name}-2.0/files
@@ -87,4 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}-2.0/scripts/Time
 %{_datadir}/%{name}-2.0/scripts/Users
 %{_datadir}/%{name}-2.0/scripts/Utils
+
+%files devel
+%defattr(644,root,root,755)
 %{_pkgconfigdir}/system-tools-backends-2.0.pc
