@@ -5,11 +5,11 @@ Version:	2.10.2
 Release:	5
 License:	LGPL v2+
 Group:		Applications/System
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.10/%{name}-%{version}.tar.bz2
+Source0:	https://download.gnome.org/sources/system-tools-backends/2.10/%{name}-%{version}.tar.bz2
 # Source0-md5:	edae148b31342aecae035051adc70c74
 Patch0:		%{name}-logindefs.patch
 Patch1:		%{name}-incompatible-gpasswd.patch
-URL:		http://www.gnome.org/projects/gst/
+URL:		https://gitlab.gnome.org/Archive/system-tools-backends
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	dbus-devel >= 1.1.2
